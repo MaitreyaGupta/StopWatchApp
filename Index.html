@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<meta char set="UTF-08">
+<meta lang="en"></meta> 
+<head>StopWatch App</head>
+<title>StopWatch App</title>
+<link rel="stylesheet" type="text/css" href="Hehe.css"></link>
+<body>
+   <div class="Container">
+    <div class="Shower">
+        <div id="Showing">
+        </div>
+    </div>
+   </div>
+   <div id="Container">
+    <button type="Submit" placeholder="Button to start/stop watch" id="Button">Start</button>
+    <button type="Submit" id="Button1">Stop</button>
+  </div>
+ </body>
+<script>
+  var  Starter=document.getElementById('Showing')
+  var Finisher=document.getElementById('Button')
+  var FinishIt=document.getElementById('Button1')
+  var starting=true;
+  var counter=0;
+  var ok=0;
+  var ok1=0;
+  var ok2=0;
+  var time=new Date();
+  var secs=time.getSeconds();
+  var minutes=time.getMinutes();
+  var hours=time.getHours();
+  function start(){
+    if(starting)
+    {
+    if(time+=1)
+    {
+      if(counter<60)
+      {
+        counter+=1
+      }
+      if(counter==60)
+      {
+        if(ok<60)
+        {
+        ok+=1;
+        counter=0;
+        }
+      }
+      if(ok==60)
+      {
+        if(ok1<24)
+        {
+          ok1+=1;
+          counter=0;
+        }
+      }
+      if(ok1==24)
+      {
+        counter=0;
+      }
+    }
+    Starter.innerHTML=String(ok1)+":"+String(ok)+":"+String(counter);
+  }
+  }
+ function oknow(){
+  setInterval(start,1000);
+ }
+ function sayit(){
+  clearInterval(start);
+ }
+ 
+  Finisher.addEventListener('click',oknow);
+  
+  Finisher.addEventListener('click',()=>
+  {
+    starting=true;
+  FinishIt.removeEventListener('click',sayit);
+  });
+  FinishIt.addEventListener('click',sayit);
+ 
+   
+FinishIt.addEventListener('click',()=>
+{
+  Finisher.removeEventListener('click',oknow);
+  starting=false;
+ Starter.innerHTML="";
+ counter=0;
+ ok=0;
+ ok1=0;
+});
+</script>
+
+</html> 
